@@ -1,0 +1,94 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-serif: 'Merriweather', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Open Sans', Arial, sans-serif;
+
+  --color-navy: #023059;
+  --color-navy-deep: #1b3649;
+  --color-navy-mid: #1f3b52;
+  --color-navy-bar: #193648;
+  --color-red: #bf0404;
+  --color-red-deep: #910204;
+  --color-red-btn: #c62828;
+  --color-body: #666666;
+  --color-ink: #333333;
+  --color-muted: #707070;
+  --color-line: #e5e5e5;
+  --color-soft: #f5f7f9;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    color: var(--color-body);
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    min-height: 100svh;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-red) 22%, white);
+  }
+}
+
+@layer utilities {
+  .reveal {
+    animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .reveal-delay-1 {
+    animation-delay: 0.12s;
+  }
+
+  .reveal-delay-2 {
+    animation-delay: 0.24s;
+  }
+
+  .float-soft {
+    animation: float-soft 6s ease-in-out infinite;
+  }
+
+  .mesh-hero {
+    background:
+      radial-gradient(ellipse 80% 60% at 0% 0%, rgba(191, 4, 4, 0.06), transparent 55%),
+      radial-gradient(ellipse 70% 50% at 100% 20%, rgba(2, 48, 89, 0.08), transparent 50%),
+      linear-gradient(180deg, #f8fafc 0%, #ffffff 55%, #ffffff 100%);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: rotate(-2deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-2deg) translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .float-soft {
+    animation: none !important;
+  }
+}
